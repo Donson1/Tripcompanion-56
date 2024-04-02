@@ -36,6 +36,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = "ulogin"
 login_manager.login_message_category = "info"
 migrate = Migrate(app, db)
+
 from forms import *
 
 @login_manager.user_loader
@@ -302,6 +303,10 @@ def addpost():
     print(form.errors)
     return render_template("addpost.html", form=form)
 
+@app.route('/')
+def indexx():  
+    user= User.query.order_by(User.id.desc()).all()
+    return render_template("index.html",user=user)
 
 
 @app.route('/addalumni', methods=['GET', 'POST'])
@@ -324,7 +329,7 @@ def addalumni():
        
             db.session.add(new)
             db.session.commit()
-            flash("New Student added", "success")
+            flash("New Center Added", "success")
             return redirect('/newdash')
     print(form.errors)
     return render_template("addAlumni.html", form=form)
@@ -392,7 +397,7 @@ def main():
     return render_template("page.html")
 
 
-@app.route('/')
+@app.route('/mains')
 def mains():  
     name=Person.query.order_by(Person.id.desc()).all()
     users=User.query.order_by(User.id.desc()).all()
@@ -431,6 +436,7 @@ def lofin():
     return render_template("stafflogin.html")
 
 
+
 @app.route('/newdash')
 @login_required
 def newdash():  
@@ -458,7 +464,11 @@ def search():
 
 
 
-@app.route('/chatid/<int:userid>', methods=['GET', 'POST'])
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """@app.route('/chatid/<int:userid>', methods=['GET', 'POST'])
 @login_required
 def chatid(userid):
     form = Registration()
@@ -764,7 +774,7 @@ def userbase():
     return render_template("userbase.html", name=name, users=users,user=user,current_user=current_user, story=story)
  
 
-  
+
 
 
 @app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])

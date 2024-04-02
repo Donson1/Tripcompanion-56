@@ -27,7 +27,7 @@
           </div>-->
       </div>
   <div class="tabContainer">
-      <a href="/profile"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-users"></i><span>All Students</span></div></a>
+      <a href="/profile"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-users"></i><span>All Place</span></div></a>
       <div class="tabButtonBorder"></div>
       <!--<div class="panel">
           <ul>
@@ -39,16 +39,12 @@
       </div>-->
   </div>
   <div class="tabContainer">
-      <a href="/addalumni"><div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+      <a href="/addalumni"><div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-plus-circle"></i><span>Add Place</span></div></a>
       <div class="tabButtonBorder"></div>
   
   </div>
 
-  <div class="tabContainer">
-      <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
-      <div class="tabButtonBorder"></div>
-  
-  </div>
+ 
 
   
   <div class="tabContainer">
@@ -95,31 +91,36 @@
         </div>
      
       <input style="display:none" id="image-picker" type="file" required="required" accept="image/*" />
+      
       <label for="surname">Name:</label>
       <input type="text" class="form-control" name="guardian" placeholder="Name" ><br>
+
+      <label for="maiden_name">Choose a Center:</label>
+      {{form.year( class="form-control mb-2", type="number", placeholder="",id="floatingInput", required="required")}}
+      
  
-      
-      <label for="surname">Student ID:</label>
-      <input type="number" class="form-control" name="index" placeholder="Student ID" ><br>
 
-      <label for="school">Course:</label>
-      {{form.schools( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
+      <label for="surname">Price:</label>
+      <input type="number" class="form-control" name="index" placeholder="Enter Price" ><br>
 
+     
+      <label for="school">Choose a Center:</label>
+      {{form.schools( class="form-control mb-2", type="number", placeholder="",id="floatingInput", required="required")}}
+
+     
     
-      <label for="maiden_name">Level:</label>
-      {{form.year( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
+   
       
+      <label for="maiden_name">Location</label>
+      <input type="text" class="form-control" name="fees" placeholder="Enter Location"><br>
       
-      <label for="maiden_name">Fees</label>
-      <input type="number" class="form-control" name="fee" placeholder="Fees"><br>
-      
-      <label for="maiden_name">Arreas</label>
-      <input type="number" class="form-control" name="arrears" placeholder="Arreas"><br>
+      <label for="maiden_name">Stars</label>
+      <input type="number" class="form-control" name="arrears" placeholder="Enter stars"><br>
       
 
    
       
-      <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Student</h6></button>
+      <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Place</h6></button>
                 
       
         

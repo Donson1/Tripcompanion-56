@@ -30,7 +30,7 @@
             </div>-->
         </div>
     <div class="tabContainer">
-        <a href="/profile"> <div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-users"></i><span>All Students</span></div></a>
+        <a href="/profile"> <div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-users"></i><span>All Place</span></div></a>
         <div class="tabButtonBorder"></div>
         <!--<div class="panel">
             <ul>
@@ -42,20 +42,15 @@
         </div>-->
     </div>
     <div class="tabContainer">
-        <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+        <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Place</span></div></a>
         <div class="tabButtonBorder"></div>
     
     </div>
 
-    <div class="tabContainer">
-        <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
-        <div class="tabButtonBorder"></div>
-    
-    </div>
 
     
     <div class="tabContainer">
-        <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>
+        <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Generate Reports</span></div></a>
         <div class="tabButtonBorder"></div>
 <!--                <div class="panel">
             <ul>
@@ -78,9 +73,12 @@
                 <div class="nameAndStars" style="display:flex; justify-content:space-between;">
                     <div class="name"><h6 style="font-size:20px;"><b>{{user.guardian}}</b></h6></div> 
                 <a href="#">
-                    <div class="name" style="background-color:#204902; padding:5px; color:#fff; border-radius:5px;">Edit</div> 
+                    <div class="name" style="background-color:#204902; padding:5px; color:#fff; border-radius:5px;">{{user.arrears}} Stars</div> 
                 </a>
                 </div>
+                
+                    <div class="name" style=" padding:5px; color:#000; border-radius:5px;">{{user.fees}} </div> 
+            
             </div>
             
             
@@ -91,13 +89,13 @@
     width:120px;
     font-size:20px;
     padding: var(--spacing-xxxs) var(--spacing-xxs);
-    border-radius: var(--spacing-xxxs);">Level {{user.work}}</p>
+    border-radius: var(--spacing-xxxs);">Ghc{{user.index}}</p>
                     
                     
                 </div>
             <div  style="display:flex; justify-content:space-between; margin-top:10px;">
 
-                <span class="header"><b>{{user.fullname}}</b></span>
+                <span class="header"><b></b></span>
                 <span class="header"></span>
             </div>
                 
