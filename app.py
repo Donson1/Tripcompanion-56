@@ -134,6 +134,7 @@ class User(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     schools= db.Column(db.String()  )
     link= db.Column(db.String()  )
+    about= db.Column(db.String()  )
     desc= db.Column(db.String()  )
     year= db.Column(db.String()  )
     fees= db.Column(db.String()  )
