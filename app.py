@@ -133,9 +133,9 @@ class alumni(db.Model, UserMixin):
 class User(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     schools= db.Column(db.String()  )
-    link= db.Column(db.String()  )
-    about= db.Column(db.String()  )
-    desc= db.Column(db.String()  )
+    # linsk= db.Column(db.String()  )
+    # about= db.Column(db.String()  )
+    # desc= db.Column(db.String()  )
     year= db.Column(db.String()  )
     fees= db.Column(db.String()  )
     arrears= db.Column(db.Integer()  )
@@ -394,6 +394,12 @@ def hotel():
     user=User.query.filter_by(year='Hotel').order_by(User.id.desc()).all()
     return render_template('hotel.html',user=user)
 
+
+@app.route('/super')
+def Supermarket():
+    user=User.query.filter_by(year='Super Market').order_by(User.id.desc()).all()
+    return render_template('supermarket.html',user=user)
+
 @app.route('/resort')
 def resort():
     user=User.query.filter_by(year='Resort').order_by(User.id.desc()).all()
@@ -413,8 +419,8 @@ def addalumni():
             new=User(schools=form.schools.data,
                  
                   
-                   link=form.link.data,  
-                   desc=form.desc.data,  
+                #    link=form.link.data,  
+                #    desc=form.desc.data,  
                    year=form.year.data,  
                    fees=form.fees.data,  
                    index=form.index.data,  
@@ -479,6 +485,10 @@ def addstatus():
 @app.route('/about', methods=['GET', 'POST'])
 def about():  
     return render_template("about.html")
+
+@app.route('/contactus', methods=['GET', 'POST'])
+def contactus():  
+    return render_template("contactus.html")
 
 @app.route('/eme', methods=['GET', 'POST'])
 def eme():  
