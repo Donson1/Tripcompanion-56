@@ -133,14 +133,31 @@ class alumni(db.Model, UserMixin):
 class User(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     schools= db.Column(db.String()  )
+    link= db.Column(db.String()  )
+    desc= db.Column(db.String()  )
     year= db.Column(db.String()  )
     fees= db.Column(db.String()  )
-    arrears= db.Column(db.String()  )
+    arrears= db.Column(db.Integer()  )
     index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
     image_file = db.Column(db.String(20))
+    
+
     def __repr__(self):
         return f"User('{self.id}', {self.fullname}"
+    
+    
+
+    
+  
+class Locationsearch(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    fullname= db.Column(db.String()  )
+    center= db.Column(db.String()  )
+    location= db.Column(db.String()  )
+    def __repr__(self):
+        return f"User('{self.id}', {self.fullname}" 
+
  
  
   
@@ -241,6 +258,12 @@ def votes():
     return render_template('votes.html', users=users)
 
 
+@app.route('/profileitem/<int:userid>', methods=['GET', 'POST'])
+def profileitem(userid): 
+    profile=User.query.get_or_404(userid)
+    return render_template("profileitem.html",profile=profile)
+
+
 @app.route('/list/<int:userid>', methods=['GET', 'POST'])
 @login_required
 def list(userid):
@@ -303,11 +326,82 @@ def addpost():
     print(form.errors)
     return render_template("addpost.html", form=form)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def indexx():  
+    form=Locationform()
+    if form.validate_on_submit():
+        post=Locationsearch(  
+                   fullname=form.fullname.data,     
+                   center=form.center.data,     
+                  location=form.location.data              
+                  )
+        db.session.add(post)
+        db.session.commit()
+        flash("You search for" + " " + form.center.data, "success")
+        if form.center.data == "Hotel":
+            return redirect('/hotel')
+        elif form.center.data == "Appartment":
+            return redirect('/appartment')
+        elif form.center.data == "Restaurant":
+            return redirect('/rest')
+        elif form.center.data == "Resort":
+            return redirect('/resort')
+        else:
+            return redirect('/')
+    print(form.errors)
     user= User.query.order_by(User.id.desc()).all()
-    return render_template("index.html",user=user)
+    return render_template("index.html",user=user, form=form)
 
+
+@app.route('/browse', methods=['GET', 'POST'])
+def browse():  
+    form=Locationform()
+    if form.validate_on_submit():
+        post=Locationsearch(  
+                   fullname=form.fullname.data,     
+                   center=form.center.data,     
+                  location=form.location.data              
+                  )
+        db.session.add(post)
+        db.session.commit()
+        flash("You search for" + " " + form.center.data, "success")
+        if form.center.data == "Hotel":
+            return redirect('/hotel')
+        elif form.center.data == "Appartment":
+            return redirect('/appartment')
+        elif form.center.data == "Restaurant":
+            return redirect('/rest')
+        elif form.center.data == "Resort":
+            return redirect('/resort')
+        else:
+            return redirect('/browse')
+    print(form.errors)
+    user= User.query.order_by(User.id.desc()).all()
+    return render_template("browse.html",user=user, form=form)
+
+
+
+
+
+@app.route('/appartment')
+def appartment():
+    user=User.query.filter_by(year='Appartment').order_by(User.id.desc()).all()
+    return render_template('appartment.html',users=user)
+
+@app.route('/hotel')
+def hotel():
+    user=User.query.filter_by(year='Hotel').order_by(User.id.desc()).all()
+    return render_template('hotel.html',user=user)
+
+@app.route('/resort')
+def resort():
+    user=User.query.filter_by(year='Resort').order_by(User.id.desc()).all()
+    return render_template('resort.html',user=user)
+
+@app.route('/rest')
+def rest():
+    user=User.query.filter_by(year='Restaurant').order_by(User.id.desc()).all()
+    return render_template('rest.html',user=user)
 
 @app.route('/addalumni', methods=['GET', 'POST'])
 @login_required
@@ -318,6 +412,8 @@ def addalumni():
             new=User(schools=form.schools.data,
                  
                   
+                   link=form.link.data,  
+                   desc=form.desc.data,  
                    year=form.year.data,  
                    fees=form.fees.data,  
                    index=form.index.data,  
@@ -379,10 +475,13 @@ def addstatus():
     return render_template("addstatus.html", form=form)
 
 
-@app.route('/chats', methods=[ 'POST'])
-@login_required
-def chats():  
-    return render_template("search.html")
+@app.route('/about', methods=['GET', 'POST'])
+def about():  
+    return render_template("about.html")
+
+@app.route('/eme', methods=['GET', 'POST'])
+def eme():  
+    return render_template("eme.html")
 
 
 

@@ -74,6 +74,8 @@ class Adduser(FlaskForm):
 ], default=None)
     guardian= StringField('guardian')
     fees= StringField('fees')
+    link= StringField('link')
+   
     index= StringField('index')
     arrears= StringField('arrears')
     image_file = StringField('image_file')
@@ -84,6 +86,19 @@ class Story(FlaskForm):
     work= StringField('work')
     guardian= StringField('guardian')
     image_file = StringField('image_file')
+    submit = SubmitField('submit') 
+    
+class Locationform(FlaskForm):
+    fullname = StringField('fullname')
+    center= SelectField('Level', choices=[
+    ('Centers', 'Centers'),
+    ('Hotel', 'Hotel'),
+    ('Restaurant', 'Restaurant'),
+    ('Appartment', 'Appartment'),
+    ('Resort', 'Resort'),
+        
+], default=None)
+    location= StringField('location')
     submit = SubmitField('submit') 
     
   
