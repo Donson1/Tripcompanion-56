@@ -67,6 +67,7 @@ class Adduser(FlaskForm):
     ('Restaurant', 'Restaurant'),
     ('Appartment', 'Appartment'),
     ('Resort', 'Resort'),
+    ('Super Market', 'Super Market'),
   
     
     
@@ -96,6 +97,7 @@ class Locationform(FlaskForm):
     ('Restaurant', 'Restaurant'),
     ('Appartment', 'Appartment'),
     ('Resort', 'Resort'),
+    ('Super Market', 'Super Market'),
         
 ], default=None)
     location= StringField('location')
