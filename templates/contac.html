@@ -29,6 +29,8 @@
 
     <!-- Template Stylesheet -->
     <link href="static/aset/css/style.css" rel="stylesheet">
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-55497979-0d02-4756-8384-f1c24a18eced" data-elfsight-app-lazy></div>
 </head>
 
 <body>
@@ -56,6 +58,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="/" class="nav-item nav-link active">Home</a>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trips</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -75,151 +78,142 @@
                         </div>-->
                         <a href="/eme" class="nav-item nav-link">Emergency</a>
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Search for Vacation</a>
+                    <a href="/browse" class="btn btn-primary px-3 d-none d-lg-flex">Search for Vacation</a>
                 </div>
             </nav>
         </div>
         <!-- Navbar End -->
 
 
-
-
-       
-
-
-       
-
-
-
-
-        <!-- Property List Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-0 gx-5 align-items-end">
-                    <div class="col-lg-6">
-                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Resort Properties</h1>
-                            <p>We're here to help you plan the perfect trip. Whether you're going on holiday, taking a business trip, or looking to set up a corporate travel account.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                            <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                           
-                            
-                            
-                            
-                           
-                        </div>
-                    </div>
-
+        <!-- Header Start -->
+        <div class="container-fluid header bg-white p-0">
+            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
              
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                            {%for user in user%}
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="property-item rounded overflow-hidden">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="{{user.image_file}}" alt=""></a>
-                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">from Ghc {{user.index}}</div>
-                                        <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{user.year}}</div>
-                                    </div>
-                                    <div class="p-4 pb-0">
-                                        <!--<h5 class="text-primary mb-3">Ghc {{user.index}}</h5>-->
-                                        <a class="d-block h5 mb-2" href="">{{user.guardian}}</a>
-                                        <p style="color:#000;"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{user.fees}}</p>
-                                    </div>
-                                    <div class="d-flex border-top">
-
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i>{{user.arrears}} Star {{user.year}}</small>
-                                       
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-users text-primary me-2"></i>{{user.schools}} People</small>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                    
-
+                
+                <div class="col-md-12 animated fadeIn">
+                    <div class="owl-carousel header-carousel">
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/30/54/b2/bidri-ambience.jpg?w=600&h=-1&s=1" alt="">
                         </div>
-                    </div>
-
-
-
-                    
-                    
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid" src="https://m.alisahotels.com/images/uploads/270/6500654f0450d_nanagaza2021-1382.jpeg?55718393" alt="">
+                        </div>
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid" src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i1ZX2DFItDrA/v1/-1x-1.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-     
-        <!-- Property List End -->
+        <!-- Header End -->
 
 
+        <!-- Search Start -->
+        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-12">
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- Search End -->
 
 
        
 
 
-        <!-- Testimonial Start -->  
+ 
+
+        <!-- Call to Action Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Our Reviews!</h1>
-                    <p> Trip companion app makes travel easy, fun, and stress-free. </p>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>The trip companion app is a game-changer! It made planning effortless and provided fantastic travel tips</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-1.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Benjamin Amoah</h6>
-                                    <small>Student</small>
-                                </div>
+                <div class="bg-light rounded p-3">
+                    <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img class="img-fluid rounded w-100" src="https://ak-d.tripcdn.com/images/0a14l12000doxd9mwD330.jpg" alt="">
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Fantastic app! It helped me discover hidden gems and made my trip so much smoother.</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-2.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Miss Regina Crabbe</h6>
-                                    <small>Lecturer</small>
-                                </div>
+                            	
+                            
+		<div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img class="img-fluid rounded w-100" src="https://ak-d.tripcdn.com/images/0a12j12000becq7g4ACD1.png" alt="">
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>The trip companion app is my go-to for travel. Easy to use and super helpful!</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-3.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Felix Mensah</h6>
-                                    <small>Student</small>
-                                </div>
-                            </div>
+
+                                    
+                          
+                       
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
+        <!-- Call to Action End -->
+
+ <!-- Call to Action Start -->
+ <div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded p-3">
+            <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <img class="img-fluid rounded w-100" src="https://img.freepik.com/free-photo/outdoor-blue-health-travel-leisure_1203-4670.jpg" alt="">
+                    </div>
+                        
+                    
+
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="mb-4">
+                            <h1 class="mb-3">Our Support Unit.</h1>
+                            <label>Kindly text us all you issues and problems. We've got youb covered.</label>
+                        </div>
+                        <form action="{{ url_for('indexx') }}" method="post" id="myform">
+                            {{ form.hidden_tag() }}
+
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="form-group">
+                                <label>Type Name
+                                    
+                                <span class="text-danger">*</span></label>
+                                {{form.name(class="input-field " ,style="width:100%; padding:20px; border:1px solid #2E2D7F; ",  placeholder="John Doe", id="floatingInput", required="required")}}
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12 mt-3">
+                            <div class="form-group">
+                                <label>Type Email
+                                    
+                                <span class="text-danger">*</span></label>
+                                {{form.email(class="input-field " ,style="width:100%; padding:20px; border:1px solid #2E2D7F; ",  placeholder="nana@gmail.com", id="floatingInput", required="required")}}
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12 mt-3">
+                            <div class="form-group">
+                                <label>Type Message
+                                    
+                                <span class="text-danger">*</span></label>
+                                {{form.message(class="input-field " ,style="width:100%; padding:20px; border:1px solid #2E2D7F; ",  placeholder="Show me the closet way...", id="floatingInput", required="required")}}
+                                
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary py-3 px-5 mt-3" type="submit">Send Unit</button>
+
+                        
+                       <!-- <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
+                        <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>-->
+                        <form>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->
+       
+
         
        <!-- <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
         <div class="elfsight-app-dfdcc463-a526-4223-a562-2413f75f36dc" data-elfsight-app-lazy></div>

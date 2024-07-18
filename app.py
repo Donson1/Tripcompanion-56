@@ -339,6 +339,27 @@ def addpost():
     print(form.errors)
     return render_template("addpost.html", form=form)
 
+
+@app.route('/contactus', methods=['GET', 'POST'])
+def contactus():  
+    form=Formtripfrom()
+    if form.validate_on_submit():
+        print("Form is validated")
+        post=Formtrip(  
+                   name=form.name.data,     
+                   email=form.email.data,     
+                  message=form.message.data              
+                  )
+        db.session.add(post)
+        db.session.commit()   
+        flash('Thank you for your message. We will get back to you shortly.', 'success')
+        return redirect('/contactus')
+    print(form.errors)
+    print("Getting all users")
+    return render_template("contactus.html",form=form)
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def indexx():  
     print("Inside home function")
@@ -356,9 +377,10 @@ def indexx():
         return redirect('/')
     print(form.errors)
     print("Getting all users")
+    apartment=User.query.filter_by(year='Appartment').order_by(User.id.desc()).all()
     user= User.query.order_by(User.id.desc()).all()
     print("Rendering index.html")
-    return render_template("index.html",user=user, form=form)
+    return render_template("index.html",user=user, form=form,apartment=apartment)
 
 
 @app.route('/browse', methods=['GET', 'POST'])
@@ -381,11 +403,16 @@ def browse():
             return redirect('/rest')
         elif form.center.data == "Resort":
             return redirect('/resort')
+        elif form.center.data == "Super Market":
+            return redirect('/super')
+        
         else:
             return redirect('/browse')
     print(form.errors)
+    # User.query.filter_by(year='Appartment').order_by(User.id.desc()).all()
+    hotel= User.query.filter_by(year='Hotel').order_by(User.id.desc()).all()
     user= User.query.order_by(User.id.desc()).all()
-    return render_template("browse.html",user=user, form=form)
+    return render_template("browse.html",user=user, form=form,hotel=hotel)
 
 
 
@@ -402,6 +429,11 @@ def appartment():
 def hotel():
     user=User.query.filter_by(year='Hotel').order_by(User.id.desc()).all()
     return render_template('hotel.html',user=user)
+
+@app.route('/super')
+def super():
+    user=User.query.filter_by(year='Super Market').order_by(User.id.desc()).all()
+    return render_template('supermarket.html',user=user)
 
 @app.route('/resort')
 def resort():
@@ -488,6 +520,8 @@ def addstatus():
 @app.route('/about', methods=['GET', 'POST'])
 def about():  
     return render_template("about.html")
+
+
 
 @app.route('/eme', methods=['GET', 'POST'])
 def eme():  

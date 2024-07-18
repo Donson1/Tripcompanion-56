@@ -144,6 +144,30 @@
 
        
 
+        <!-- Call to Action Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="bg-light rounded p-3">
+                    <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img class="img-fluid rounded w-100" src="https://ak-d.tripcdn.com/images/0a14l12000doxd9mwD330.jpg" alt="">
+                            </div>
+                            	
+                            
+		<div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <img class="img-fluid rounded w-100" src="https://ak-d.tripcdn.com/images/0a12j12000becq7g4ACD1.png" alt="">
+                            </div>
+
+                                    
+                          
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call to Action End -->
     
 
 
@@ -152,12 +176,12 @@
             <div class="container">
                 <div class="row g-0 gx-5 align-items-end">
                     <div class="col-lg-6">
-                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Featured Properties</h1>
+                        <div class="text-start mx-auto mb-5 wow " >
+                            <h1 class="mb-3">Amenities & Facilities</h1>
                             <p>We're here to help you plan the perfect trip. Whether you're going on holiday, taking a business trip, or looking to set up a corporate travel account.</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                    <div class="col-lg-6 text-start text-lg-end wow " >
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
                                 <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
@@ -183,7 +207,7 @@
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4">
                             {%for user in user%}
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                <a href="{{url_for("profileitem", userid=user.id)}}">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
@@ -201,9 +225,9 @@
                                     </div>
                                     <div class="d-flex border-top">
 
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i>{{user.arrears}} Star {{user.year}}</small>
+                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning "></i>{{user.arrears}} Star {{user.year}}</small>
                                        
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-users text-primary me-2"></i>{{user.schools}} People</small>
+                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-users text-primary me-2"></i>{{user.schools}}</small>
                                        
                                     </div>
                                 </div>
@@ -246,6 +270,7 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="mb-4">
                                     <h1 class="mb-3">Our Support Unit.</h1>
+                                    <label>Kindly text us all you issues and problems. We've got youb covered.</label>
                                 </div>
                                 <form action="{{ url_for('indexx') }}" method="post" id="myform">
                                     {{ form.hidden_tag() }}
@@ -293,63 +318,102 @@
         </div>
         <!-- Call to Action End -->
 
-
-       
-
-
-        <!-- Testimonial Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Our Clients Say!</h1>
-                    <p>Our clients say our trip companion app makes travel easy, fun, and stress-free. </p>
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Popular Apartment</h1>
+            <p>Our clients say our trip companion app makes travel easy, fun, and stress-free. </p>
+        </div>
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    {%for user in apartment%}
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                       <a href="{{url_for("profileitem", userid=user.id)}}">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href="{{url_for("profileitem", userid=user.id)}}"><img class="img-fluid" src="{{user.image_file}}" alt=""></a>
+                                {% if user.center == "super market" %}
+                                <p>tell me</p>
+                                {% endif %}
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{user.year}}</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <!--<h5 class="text-primary mb-3">Ghc {{user.index}}</h5>-->
+                                <a class="d-block h5 mb-2" href="">{{user.guardian}}</a>
+                                <p style="color:#000;"><a href="{{user.link}}"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{user.fees}}</a></p>
+                            </div>
+                            <div class="d-flex border-top">
+
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i>{{user.arrears}} Star {{user.year}}</small>
+                               
+                               
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="btn btn-primary py-3 px-5" href="/browse">Browse More Property</a>
+                    </div>
+
                 </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
-                                       
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-1.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Benjamin Amoah</h6>
-                                    <small>Student</small>
-                                </div>
-                            </div>
+            </div>
+        </div>
+    </div>
+<hr>
+
+<!-- Testimonial Start -->  
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Our Reviews!</h1>
+            <p> Trip companion app makes travel easy, fun, and stress-free. </p>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                    <p>The trip companion app is a game-changer! It made planning effortless and provided fantastic travel tips</p>
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Benjamin Amoah</h6>
+                            <small>Student</small>
                         </div>
                     </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
-                                       
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-2.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Miss Regina Crabbe</h6>
-                                    <small>Lecturer</small>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                   
+                    <p>Fantastic app! It helped me discover hidden gems and made my trip so much smoother.</p>
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
+                    <div class="d-flex align-items-center">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Miss Regina Crabbe</h6>
+                            <small>Lecturer</small>
                         </div>
                     </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clitagkhv stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
-                                       
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="static/aset/img/testimonial-3.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Felix Mensah</h6>
-                                    <small>Student</small>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                    <p>The trip companion app is my go-to for travel. Easy to use and super helpful!</p>
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i></small>
+                    <div class="d-flex align-items-center">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Felix Mensah</h6>
+                            <small>Student</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
         <!-- Testimonial End -->
 
 
@@ -362,9 +426,9 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Get In Touch</h5>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Central University, Miotso-Accra Ghana</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+233 555 202 319, +233 257 893 116</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>yawagbeko1@gmail.com, ntimjerry68@gmail.com</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Miotso-Accra Ghana</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+233 555 202 319</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>tripcompanion@gmail.com</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -373,12 +437,19 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="text-white mb-4">Quick Links</h5>
-                        <a class="btn btn-link text-white-50" href="/about">About Us</a>
-                        <a class="btn btn-link text-white-50" href="/contactus">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="">Our Services</a>
-                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                        <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+                        <h5 class="text-white mb-4">Quick Center</h5>
+                      
+                        <a href="/hotel" class="btn btn-link text-white-50" 
+class="btn btn-link text-white-50" >Hotel</a>
+                                <a href="/rest" class="btn btn-link text-white-50" 
+class="btn btn-link text-white-50" >Restaurant</a>
+                                <a href="/appartment" class="btn btn-link text-white-50" 
+class="btn btn-link text-white-50" >Appartment</a>
+                                <a href="/resort" class="btn btn-link text-white-50" 
+class="btn btn-link text-white-50" >Resort</a>
+                                <a href="/super" class="btn btn-link text-white-50" 
+class="btn btn-link text-white-50" >Super Market</a>
+                      
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Photo Gallery</h5>
@@ -423,9 +494,9 @@
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
+                                <a href="/">Home</a>
+                                <a href="/about">About Us</a>
+                                <a href="/contactus">Contact</a>
                                 <a href="">FQAs</a>
                             </div>
                         </div>
