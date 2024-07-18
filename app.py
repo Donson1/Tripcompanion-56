@@ -133,19 +133,22 @@ class alumni(db.Model, UserMixin):
 class User(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     schools= db.Column(db.String()  )
-    # linsk= db.Column(db.String()  )
-    # about= db.Column(db.String()  )
-    # desc= db.Column(db.String()  )
+    link= db.Column(db.String()  )
+    new= db.Column(db.String()  )
+    about= db.Column(db.String()  )
+    desc= db.Column(db.String()  )
     year= db.Column(db.String()  )
     fees= db.Column(db.String()  )
     arrears= db.Column(db.Integer()  )
     index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
     image_file = db.Column(db.String(20))
+    image_file1 = db.Column(db.String(20))
+    image_file2 = db.Column(db.String(20))
     
 
     def __repr__(self):
-        return f"User('{self.id}', {self.fullname}"
+        return f"User('{self.id}', {self.schools}"
     
     
 
@@ -158,6 +161,15 @@ class Locationsearch(db.Model,UserMixin):
     location= db.Column(db.String()  )
     def __repr__(self):
         return f"User('{self.id}', {self.fullname}" 
+    
+  
+class Formtrip(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    name= db.Column(db.String()  )
+    email= db.Column(db.String()  )
+    message= db.Column(db.String()  )
+    def __repr__(self):
+        return f"User('{self.id}', {self.name}" 
 
  
  
@@ -329,28 +341,23 @@ def addpost():
 
 @app.route('/', methods=['GET', 'POST'])
 def indexx():  
-    form=Locationform()
+    print("Inside home function")
+    form=Formtripfrom()
     if form.validate_on_submit():
-        post=Locationsearch(  
-                   fullname=form.fullname.data,     
-                   center=form.center.data,     
-                  location=form.location.data              
+        print("Form is validated")
+        post=Formtrip(  
+                   name=form.name.data,     
+                   email=form.email.data,     
+                  message=form.message.data              
                   )
         db.session.add(post)
-        db.session.commit()
-        flash("You search for" + " " + form.center.data, "success")
-        if form.center.data == "Hotel":
-            return redirect('/hotel')
-        elif form.center.data == "Appartment":
-            return redirect('/appartment')
-        elif form.center.data == "Restaurant":
-            return redirect('/rest')
-        elif form.center.data == "Resort":
-            return redirect('/resort')
-        else:
-            return redirect('/')
+        db.session.commit()   
+        flash('Thank you for your message. We will get back to you shortly.', 'success')
+        return redirect('/')
     print(form.errors)
+    print("Getting all users")
     user= User.query.order_by(User.id.desc()).all()
+    print("Rendering index.html")
     return render_template("index.html",user=user, form=form)
 
 
@@ -384,6 +391,8 @@ def browse():
 
 
 
+
+
 @app.route('/appartment')
 def appartment():
     user=User.query.filter_by(year='Appartment').order_by(User.id.desc()).all()
@@ -393,12 +402,6 @@ def appartment():
 def hotel():
     user=User.query.filter_by(year='Hotel').order_by(User.id.desc()).all()
     return render_template('hotel.html',user=user)
-
-
-@app.route('/super')
-def Supermarket():
-    user=User.query.filter_by(year='Super Market').order_by(User.id.desc()).all()
-    return render_template('supermarket.html',user=user)
 
 @app.route('/resort')
 def resort():
@@ -417,17 +420,17 @@ def addalumni():
     if form.validate_on_submit():
   
             new=User(schools=form.schools.data,
-                 
-                  
-                #    link=form.link.data,  
-                #    desc=form.desc.data,  
+                   link=form.link.data,  
+                   desc=form.desc.data,  
                    year=form.year.data,  
                    fees=form.fees.data,  
                    index=form.index.data,  
                    arrears=form.arrears.data,  
                    guardian=form.guardian.data,  
                     
-               image_file=form.image_file.data
+               image_file=form.image_file.data,
+               image_file1=form.image_file1.data,
+               image_file2=form.image_file2.data
                   )
        
             db.session.add(new)
@@ -485,10 +488,6 @@ def addstatus():
 @app.route('/about', methods=['GET', 'POST'])
 def about():  
     return render_template("about.html")
-
-@app.route('/contactus', methods=['GET', 'POST'])
-def contactus():  
-    return render_template("contactus.html")
 
 @app.route('/eme', methods=['GET', 'POST'])
 def eme():  

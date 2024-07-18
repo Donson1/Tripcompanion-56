@@ -86,6 +86,7 @@
           <h6 id="error" style="color: red; display: none;">Please upload an image to continue</h6>
           
         </label>
+        
         <div class="alert alert-primary" role="alert">
           Tap on the image to upload an item
         </div>
@@ -95,8 +96,12 @@
       <label for="surname">Name:</label>
       <input type="text" class="form-control" name="guardian" placeholder="Name" ><br>
 
-     
-     
+      <label for="maiden_name">Add Location link:</label>
+      {{form.link( class="form-control mb-2", type="text", placeholder=" Add Location Link",id="floatingInput", required="required")}}
+      
+      <label for="maiden_name">Add description</label>
+      {{form.desc( class="form-control mb-2", type="text", placeholder="Add description",id="floatingInput", required="required")}}
+      
  
       <label for="maiden_name">Choose a Center:</label>
       {{form.year( class="form-control mb-2", type="number", placeholder="",id="floatingInput", required="required")}}
@@ -133,6 +138,16 @@
       
         <div class="form-floating mb-3" >
           {{form.image_file (class="input-field", id="firebaseLink", style="border: none; color:#fff;" )}}
+         
+        </div>
+
+        <div class="form-floating mb-3" >
+          {{form.image_file1 (class="input-field", id="firebaseLink", style="border: none; color:#fff;" )}}
+         
+        </div>
+
+        <div class="form-floating mb-3" >
+          {{form.image_file2 (class="input-field", id="firebaseLink", style="border: none; color:#fff;" )}}
          
         </div>
         

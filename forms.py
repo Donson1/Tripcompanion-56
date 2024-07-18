@@ -76,10 +76,13 @@ class Adduser(FlaskForm):
     guardian= StringField('guardian')
     fees= StringField('fees')
     link= StringField('link')
+    desc= StringField('desc')
    
     index= StringField('index')
     arrears= StringField('arrears')
     image_file = StringField('image_file')
+    image_file1 = StringField('image_file1')
+    image_file2 = StringField('image_file2')
     submit = SubmitField('submit') 
     
 class Story(FlaskForm):
@@ -87,6 +90,13 @@ class Story(FlaskForm):
     work= StringField('work')
     guardian= StringField('guardian')
     image_file = StringField('image_file')
+    submit = SubmitField('submit') 
+    
+    
+class Formtripfrom(FlaskForm):
+    name = StringField('name')
+    email= StringField('email')
+    message= StringField('message')
     submit = SubmitField('submit') 
     
 class Locationform(FlaskForm):

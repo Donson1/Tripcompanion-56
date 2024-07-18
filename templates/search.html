@@ -1,63 +1,319 @@
 
+<!DOCTYPE html>
+<html lang="en">
 
-    {% extends 'layout.html' %}
-    {% block body %}
-    <nav class="navbar bg-success fixed-top" style="margin-bottom:70px;">
-      <div class="container-fluid"  >
-        <h5 style=" color: #5454c9; padding:8px; color:#000;" ><b><a href="/chat"><img src="static/img/left.png"  alt=""style="width:20px; margin-left:5px; height:20px;"  ><b> </a></h5>
-          <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}' >
-            {{form.hidden_tag()}}
-          
-            <input class="form-control "style="width:150px;" type="search" name='searched' placeholder="Search" aria-label="Search">
-            <button class="btn" style="color: #fff;  background: #631AAC;   border: none;"type="submit" >Search</button>
+<head>
+    <meta charset="utf-8">
+    <title>Site</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="static/aset/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/aset/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="static/aset/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/aset/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="static/aset/css/style.css" rel="stylesheet">
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-55497979-0d02-4756-8384-f1c24a18eced" data-elfsight-app-lazy></div>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar Start -->
+        <div class="container-fluid nav-bar bg-transparent">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+                <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+                    <div class="icon p-2 me-2">
+                    </div>
+                    <h3 class="m-0 text-primary">TripCompanion</h3>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                     
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trips</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="/hotel" class="dropdown-item">Hotel</a>
+                                <a href="/rest" class="dropdown-item">Restaurant</a>
+                                <a href="/appartment" class="dropdown-item">Appartment</a>
+                                <a href="/resort" class="dropdown-item">Resort</a>
+                            </div>
+                        </div>
+                        <!--<div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404 Error</a>
+                            </div>
+                        </div>-->
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="/eme" class="btn btn-primary px-3 d-none d-lg-flex">Search for Vacation</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar End -->
+
+        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                 
+                     
+                   
+                      <form action='{{url_for('search')}}' method="post" enctype="multipart/form-data">
+                          {{form.hidden_tag()}}
+                      <div class="row ">
+                          <h4 class="mb-12">Search for Center</h4>  
+                          <div class="col-md-10">
+                              <input type="text"  type="search" name='searched'  class="form-control border-0 py-3" placeholder="Enter Your Perferrred Center. eg Park Hill">
+                          </div>
+                          <div class="col-md-2">
+                              <button class="btn btn-dark border-0 w-100 py-3" type="submit">Search</button>
+                          </div>
+                      </div>
+                  </div>
+                  
               </form>
-           </a></h5>
+
+             
+              </div>
+          </div>
       </div>
-    </nav>
+   
+         
+          
 
   <div class="row">
-    {%if posts|length < 1 %}
-    
-    <h4 class="text-muted">No result for the {{searched}}</h4>
-    {%else %}
+   
 
 
-
-    <div class="container" style="+border-radius:10px 0 0 150px; padding: 10px; margin-bottom:70px;">
-
-  
-
-  
-    
-    
-      <h6 class="text-muted" style="color: #000; text-align:left;  ">Enjoy the new experience of chatting with global friends</h6>
-      <h6 style="color:#000; text-align:left; margin-left:6px; "><b> <img src="static/img/check.png" style="width:10px;"></b> <span class="text-muted" style="font-size:13px;">29   online.</span> </h6>
-      
-      {% for post in posts %} 
-      <h6 class="text-muted">{{current_user.name}}</h6>
-      <h6  style="color: #000; background-color:rgb(72, 239, 164); overflow:hidden; text-align:left;   margin-top:10px;  padding:10px; width:100%
-      ; border-radius:15px 15px 0 15px; "  >{{post.extra}}</h6>
-      <h6 style="color:#000; text-align:right; margin-left:6px; "> <span class="text-muted" style="font-size:13px;">Delievered.</span> </h6>
-      
-      {% endfor %}
-    
-      
-  </div>
 
         
         
 
-          {%endif%}
             
 
   </div>
+
+
+
+<!-- Property List Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-0 gx-5 align-items-end">
+            <div class="col-lg-6">
+                <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                    <h1 class="mb-3">Featured Properties</h1>
+                    <p>We're here to help you plan the perfect trip. Whether you're going on holiday, taking a business trip, or looking to set up a corporate travel account.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                   
+                    
+                    
+                    
+                   
+                </div>
+            </div>
+
+
+            {%if posts|length < 1 %}
+    
+            <h4 class="text-muted">No result for the {{searched}}</h4>
+            {%else %}
+        
+     
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    {%for post in posts %}
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                       <a href="{{url_for("profileitem", userid=post.id)}}">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href="{{url_for("profileitem", userid=post.id)}}"><img class="img-fluid" src="{{post.image_file}}" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">from Ghc {{post.index}}</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{{post.year}}</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <!--<h5 class="text-primary mb-3">Ghc {{post.index}}</h5>-->
+                                <a class="d-block h5 mb-2" href="">{{post.guardian}}</a>
+                                <p style="color:#000;"><a href="{{post.link}}"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{post.fees}}</a></p>
+                            </div>
+                            <div class="d-flex border-top">
+
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-2"></i><i class="fa fa-star text-warning me-5"></i>{{post.arrears}} Star {{post.year}}</small>
+                               
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-users text-primary me-2"></i>{{post.schools}} People</small>
+                               
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                 
+
+                </div>
+            </div>
+
+
+
+            {%endif%}
+            
+            
+            </div>
+        </div>
+    </div>
 </div>
-      </div>
+
+<!-- Property List End -->
+
+
+
+
+
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Get In Touch</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Quick Links</h5>
+                <a class="btn btn-link text-white-50" href="">About Us</a>
+                <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                <a class="btn btn-link text-white-50" href="">Our Services</a>
+                <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
+                <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Photo Gallery</h5>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="static/aset/img/property-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Newsletter</h5>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                  <a href="ulogin">  <button type="button" class="btn btn-primary py-2 position-absolute  mt-2 me-2">Dashboard</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
       
-  </div>
- 
+      <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+      Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Footer End -->
 
 
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </div>
-    {% endblock body %}
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="static/aset/lib/wow/wow.min.js"></script>
+<script src="static/aset/lib/easing/easing.min.js"></script>
+<script src="static/aset/lib/waypoints/waypoints.min.js"></script>
+<script src="static/aset/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="static/aset/js/main.js"></script>
+</body>
+
+</html>

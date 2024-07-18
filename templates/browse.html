@@ -91,20 +91,21 @@
             <div class="container">
                 <div class="row g-2">
                     <div class="col-md-12">
-                        <form action='' method="post" enctype="multipart/form-data">
-                            {{form.hidden_tag()}}
-                        <div class="row ">
-                            <h4 class="mb-3">Search for Center</h4>  
-                            <div class="col-md-10">
-                                <input type="text"  name="fullname" class="form-control border-0 py-3" placeholder="Enter Your Perferrred Center. eg Park Hill">
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-dark border-0 w-100 py-3" type="submit">Search</button>
+                       
+                              <form action='{{url_for('search')}}' method="post" enctype="multipart/form-data">
+                                {{form.hidden_tag()}}
+                            <div class="row ">
+                                <h4 class="mb-12">Search for Center</h4>  
+                                <div class="col-md-10">
+                                    <input type="text"  type="search" name='searched'  class="form-control border-0 py-3" placeholder="Enter Your Perferrred Center. eg Park Hill">
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-dark border-0 w-100 py-3" type="submit">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                </form>
+                        
+                    </form>
 <hr style="margin-top:10px; color:#fff;">
                 <form action='' method="post" enctype="multipart/form-data">
                     {{form.hidden_tag()}}
