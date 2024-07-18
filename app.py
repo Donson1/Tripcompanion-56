@@ -793,7 +793,7 @@ def delete(id):
     try:
             db.session.delete(delete)
             db.session.commit()
-            return redirect(url_for('list')) 
+            return redirect(url_for('profile')) 
     except: 
         return "errrrrorrr"
    
