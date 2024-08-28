@@ -4,6 +4,7 @@ from flask import Flask, redirect, render_template, url_for,request,jsonify,get_
 from flask_migrate import Migrate
 import json
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, SubmitField, SelectField, IntegerField,PasswordField, SearchField
+# python hash, its used to hash all login information from the user and external attack
 from flask_login import login_required,login_user,logout_user,current_user,UserMixin, LoginManager
 from flask_marshmallow import Marshmallow
 from flask import(
@@ -423,7 +424,7 @@ def browse():
 @app.route('/appartment')
 def appartment():
     user=User.query.filter_by(year='Appartment').order_by(User.id.desc()).all()
-    return render_template('appartment.html',users=user)
+    return render_template('appartment.html',user=user)
 
 @app.route('/hotel')
 def hotel():
@@ -452,6 +453,7 @@ def addalumni():
     if form.validate_on_submit():
   
             new=User(schools=form.schools.data,
+                    # linked to the google api call
                    link=form.link.data,  
                    desc=form.desc.data,  
                    year=form.year.data,  
@@ -587,7 +589,7 @@ def newdash():
 
 
 
-#search for user
+#search for places
 @app.route('/search', methods=[ 'POST'])
 @login_required
 def search():
@@ -851,8 +853,11 @@ def usersignup():
         else:
             print(form.errors)     
     return render_template('usersignup.html', form=form)
-   
 
+
+
+
+# adminlogin
 @app.route('/ulogin', methods=['POST','GET'])
 def ulogin():
     form = LoginForm()
@@ -867,6 +872,7 @@ def ulogin():
         flash ('Welcome to your dashboard' +' ' + user.name ,'success')
         return redirect(url_for('newdash'))
     return render_template('userlogin.html', form=form)
+# amdin ends here
 
 
 
