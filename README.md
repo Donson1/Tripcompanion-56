@@ -92,6 +92,7 @@ Enjoy your travels with Trip Companion!
 
 This `README.md` incorporates the updated key features of the Trip Companion web app, making it more aligned with the specific functionalities you described.
 
+NB; Admin Dashboard Access: A "Dashboard" button at the footer of the home page provides system administrators with direct access to the backend, enabling efficient management and monitoring of app data and activities.
 
 
 
