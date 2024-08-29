@@ -86,12 +86,9 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For any questions or suggestions, please reach out to Donson1.
+For any questions or suggestions, please reach out to Donson1 and Humble07.
 
 Enjoy your travels with Trip Companion!
-
-javascript
-Copy code
 
 This `README.md` incorporates the updated key features of the Trip Companion web app, making it more aligned with the specific functionalities you described.
 
